@@ -21,6 +21,16 @@
   "dependencies": {
     "expo": "^22.0.2",
     "react": "16.0.0-beta.5",
-    "react-native": "^0.49.5"
+    "react-native": "^0.49.5",
+    "react-native-material-bottom-navigation": "^0.6.1",
+    "react-native-vector-icons": "^4.4.2",
+    "react-navigation": "^1.0.0-beta.19",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  },
+  "rnpm": {
+    "assets": [
+      "app/fonts"
+    ]
   }
 }
