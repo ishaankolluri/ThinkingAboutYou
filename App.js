@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      status: "home",
+      activeTab: 0,
       fontLoaded: false,
     }
   }
@@ -26,21 +26,24 @@ export default class App extends React.Component {
       'lato-hairline': require('./assets/fonts/Lato-Hairline.ttf'),
     });
     this.setState({
-      status: this.state.status,
+      activeTab: this.state.activeTab,
       fontLoaded: true,
     });
   }
 
   handleTabChange(newTabIndex){
     if(newTabIndex === 0){
+      // alert(newTabIndex);      
       this.setState({
-        status: "home",
+        activeTab: 0,
         fontLoaded: true,
       });
     }
     if(newTabIndex === 1){
+      // alert(newTabIndex);      
+      // Currently not reloading.      
       this.setState({
-        status: "friends",
+        activeTab: 1,
         fontLoaded: true,
       })
     }
@@ -48,7 +51,6 @@ export default class App extends React.Component {
       alert("Settings is an undeveleloped feature.");
     }
   }
-
 
   render() {
     if (!this.state.fontLoaded) {
@@ -79,7 +81,7 @@ export default class App extends React.Component {
             icon={<Icon size={28} color="skyblue" name="settings" />}
           />
         </BottomNavigation>
-        <Header status={this.state.status}/>
+        <Header status={this.state.activeTab}/>
 
       </View>
     );

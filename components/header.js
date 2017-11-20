@@ -3,23 +3,22 @@ import { StyleSheet, Text, View } from 'react-native';
 
 
 export default class Header extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {};
-    let status = this.props.status;
-    if(status === "home"){
-      this.state.title = "Thinking about you";
-      this.state.subtitle = "Swipe right to send good thoughts :)"
-    }else if(status === "friends"){
-      this.state.title = "Thinking about you";
-      this.state.subtitle = "Swipe right to send good thoughts :)"
-    };
-  }
+  
   render(){
+    let title = "Thinkin";
+    let subtitle = "swipe";
+    if(this.props.status === 0){
+      alert(this.props.status === 0);      
+      title = "Thinking about you";
+      subtitle = "Swipe right to send good thoughts :)";
+    }else if(this.props.status === 1){
+      title = "Friend List";
+      subtitle = "What do you think?";
+    }
     return (
       <View style={navStyles.header}>
-        <Text style={navStyles.aHead}>{this.state.title}</Text>
-        <Text style={navStyles.bHead}>{this.state.subtitle}</Text>
+        <Text style={navStyles.aHead}>{title}</Text>
+        <Text style={navStyles.bHead}>{subtitle}</Text>
       </View>
     );
   }
