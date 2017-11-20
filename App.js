@@ -31,36 +31,56 @@ export default class App extends React.Component {
     });
   }
 
+  handleTabChange(newTabIndex){
+    if(newTabIndex === 0){
+      this.setState({
+        status: "home",
+        fontLoaded: true,
+      });
+    }
+    if(newTabIndex === 1){
+      this.setState({
+        status: "friends",
+        fontLoaded: true,
+      })
+    }
+    if(newTabIndex === 2){
+      alert("Settings is an undeveleloped feature.");
+    }
+  }
+
+
   render() {
     if (!this.state.fontLoaded) {
       return <AppLoading />;
     }
     return (
       <View>
-        <Header status={this.state.status}/>
-
         <BottomNavigation 
-          labelColor="white" 
-          rippleColor="white" 
-          style={{ height:56, elevation: 8, position: 'absolute', left: 0, bottom: 0, right: 0}}
-          onTabChange={(newTabIndex) => alert(`New Tab at position ${newTabIndex}`)}
+          labelColor="skyblue" 
+          rippleColor="black" 
+          style={{ height:90, elevation: 8, position: 'absolute', top: 720, left: 0, bottom: 0, right: 0}}
+          onTabChange={(newTabIndex) => this.handleTabChange(newTabIndex)}
+          shifting="true"
         >
             <Tab
-            barBackgroundColor="#37474F"
+            barBackgroundColor="white"
             label="Home"
-            icon={<Icon size={24} color="white" name="home" />}
+            icon={<Icon size={28} color="skyblue" name="home" />}
           />
           <Tab
-            barBackgroundColor="#00796B"
+            barBackgroundColor="white"
             label="Friends"
-            icon={<Icon size={24} color="white" name="group" />}
+            icon={<Icon size={28} color="skyblue" name="group" />}
           />
           <Tab
-            barBackgroundColor="#5D4037"
+            barBackgroundColor="white"
             label="Settings"
-            icon={<Icon size={24} color="white" name="settings" />}
+            icon={<Icon size={28} color="skyblue" name="settings" />}
           />
         </BottomNavigation>
+        <Header status={this.state.status}/>
+
       </View>
     );
   }
