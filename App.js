@@ -50,6 +50,20 @@ export default class App extends React.Component {
     }
   }
 
+  handleDelete(name){
+    let updated = this.state.data.slice();
+    for(let i = 0; i < updated.length; i++){
+      if(updated[i].name === name){
+        updated.splice(i, 1);
+        break;
+      }
+    }
+    this.setState({
+      data: updated,
+      activeTab: 1
+    });
+  }
+
   render() {
     if (!this.state.fontLoaded) {
       return <AppLoading />;
@@ -61,7 +75,7 @@ export default class App extends React.Component {
       );
     }else if(this.state.activeTab === 1){
       body = (
-        <Friends data={this.state.data}/>
+        <Friends data={this.state.data} handleFriendDelete={(index) => this.handleDelete(index)}/>
       );
     }
     return (

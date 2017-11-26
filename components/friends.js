@@ -16,10 +16,8 @@ export default class Header extends React.Component {
   }
 
   handleAddClick(){
-
+    alert("Contacts");
   }
-
-
 
   renderData(){
     let data = this.state.data;
@@ -28,7 +26,7 @@ export default class Header extends React.Component {
     }
     let rows = data.map((element, index) => {
       const rightButtons = [
-        <TouchableHighlight style={homeStyles.swipeLeft}><Icon size={28} color="red" name="delete" onPress={() => this.handleDelete(index)}/></TouchableHighlight>,
+        <TouchableHighlight style={homeStyles.swipeLeft}><Icon size={28} color="red" name="delete" onPress={() => this.props.handleFriendDelete(element.name)}/></TouchableHighlight>,
       ];
       const leftButtons = [
         <TouchableHighlight style={homeStyles.swipeRight}><Icon size={28} color="skyblue" name="reply" onPress={(index) => alert("Thought sent to " + element.name + "!")}/></TouchableHighlight>,
@@ -46,10 +44,17 @@ export default class Header extends React.Component {
   }
   render(){
     let data = this.renderData();
+
     return (
-      <View style={{top: 100}}>
-        <Text style={homeStyles.received}>Your friends, ordered by activity.</Text>
-        {data}
+      <View>
+        <View style={{top: 100}}>
+          <Text style={homeStyles.received}>Your friends, ordered by activity.</Text>
+          {data}
+        </View>
+        <View style={friendStyles.addContainer}>
+          <Text style={friendStyles.deleteInfo}>Swipe left to delete friends.</Text>
+          <Icon size={90} color="skyblue" name="add-circle" style={friendStyles.add} onPress={() => this.handleAddClick()}/>
+        </View>
       </View>
     );
   }
@@ -67,6 +72,32 @@ function compare(obj1, obj2){
   }
   return 0;
 }
+
+const friendStyles = StyleSheet.create({
+  deleteInfo: {
+    backgroundColor: "transparent",
+    color: "red",
+    fontSize: 12,
+    fontFamily: 'lato-light',
+    textAlign: "center",
+  },
+  addContainer: {
+    width: "100%",
+    top: 570, 
+    position: "absolute", 
+    zIndex: 1, 
+    height: 60, 
+    justifyContent: "center", 
+    alignItems: "center",
+  },
+  add: {
+    backgroundColor: "transparent",
+    shadowColor: '#ACACAC',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10,
+  }
+});
 
 const homeStyles = StyleSheet.create({
   rowSpacer: {
