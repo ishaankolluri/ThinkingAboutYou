@@ -1,0 +1,25 @@
+{
+  "friends": 
+  [
+    {
+      "name": "Jonathan Stewart",
+      "thoughts": "19"
+    },
+    {
+      "name": "Evelyn Mason",
+      "thoughts": "7"
+    },
+    {
+      "name": "Emily Fischer",
+      "thoughts": "9"
+    },
+    {
+      "name": "Rahul Patel",
+      "thoughts": "22"
+    },
+    {
+      "name": "Maria Smith",
+      "thoughts": "1"
+    }
+  ]
+}

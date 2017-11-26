@@ -8,7 +8,6 @@ export default class Header extends React.Component {
     let title = "Thinkin";
     let subtitle = "swipe";
     if(this.props.status === 0){
-      alert(this.props.status === 0);      
       title = "Thinking about you";
       subtitle = "Swipe right to send good thoughts :)";
     }else if(this.props.status === 1){

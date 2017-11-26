@@ -1,22 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
 import { AppLoading, Font } from 'expo';
+
 import BottomNavigation, { Tab } from 'react-native-material-bottom-navigation'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-
 import Header from './components/header';
-
+import Home from './components/home';
+import Friends from './components/friends';
 
 export default class App extends React.Component {
   constructor(props){
     super(props);
+    let json = require('./data/data.json');
     this.state = {
       activeTab: 0,
       fontLoaded: false,
+      data: json.friends
     }
+   
   }
-
   async componentDidMount() {
     await Expo.Font.loadAsync({
       'lato-regular': require('./assets/fonts/LatoRegular.ttf'),
@@ -33,19 +36,14 @@ export default class App extends React.Component {
 
   handleTabChange(newTabIndex){
     if(newTabIndex === 0){
-      // alert(newTabIndex);      
       this.setState({
         activeTab: 0,
-        fontLoaded: true,
       });
     }
     if(newTabIndex === 1){
-      // alert(newTabIndex);      
-      // Currently not reloading.      
       this.setState({
         activeTab: 1,
-        fontLoaded: true,
-      })
+      });     
     }
     if(newTabIndex === 2){
       alert("Settings is an undeveleloped feature.");
@@ -55,6 +53,16 @@ export default class App extends React.Component {
   render() {
     if (!this.state.fontLoaded) {
       return <AppLoading />;
+    }
+    let body;
+    if(this.state.activeTab === 0){
+      body = (
+        <Home data={this.state.data}/>
+      );
+    }else if(this.state.activeTab === 1){
+      body = (
+        <Friends data={this.state.data}/>
+      );
     }
     return (
       <View>
@@ -82,7 +90,7 @@ export default class App extends React.Component {
           />
         </BottomNavigation>
         <Header status={this.state.activeTab}/>
-
+        {body}
       </View>
     );
   }
