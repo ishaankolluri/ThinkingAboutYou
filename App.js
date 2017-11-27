@@ -1,5 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  Animated
+} from 'react-native';
 import { AppLoading, Font } from 'expo';
 
 import BottomNavigation, { Tab } from 'react-native-material-bottom-navigation'
@@ -75,7 +80,10 @@ export default class App extends React.Component {
       );
     }else if(this.state.activeTab === 1){
       body = (
-        <Friends data={this.state.data} handleFriendDelete={(index) => this.handleDelete(index)}/>
+        <Friends
+          data={this.state.data}
+          handleFriendDelete={(index) => this.handleDelete(index)}
+        />
       );
     }
     return (
@@ -83,7 +91,16 @@ export default class App extends React.Component {
         <BottomNavigation 
           labelColor="skyblue" 
           rippleColor="black" 
-          style={{ height:90, elevation: 8, position: 'absolute', zIndex: 1, top: 720, left: 0, bottom: 0, right: 0}}
+          style={{ 
+            height:90,
+            elevation: 8,
+            position: 'absolute',
+            zIndex: 1, 
+            top: 720, 
+            left: 0, 
+            bottom: 0, 
+            right: 0
+          }}
           onTabChange={(newTabIndex) => this.handleTabChange(newTabIndex)}
           shifting="true"
         >

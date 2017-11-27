@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Animated} from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  TouchableHighlight, 
+  Animated
+} from 'react-native';
 
 import Swipeable from 'react-native-swipeable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -49,17 +55,38 @@ export default class Return extends React.Component {
     }
     let rows = data.map((element, index) => {
       const rightButtons = [
-        <TouchableHighlight style={homeStyles.swipeLeft}><Icon size={28} color="red" name="delete" onPress={() => this.handleDelete(index)}/></TouchableHighlight>,
+        <TouchableHighlight style={homeStyles.swipeLeft}>
+          <Icon
+            size={28} 
+            color="red" 
+            name="delete" 
+            onPress={() => this.handleDelete(index)}
+          />
+        </TouchableHighlight>,
       ];
       const leftButtons = [
-        <TouchableHighlight style={homeStyles.swipeRight}><Icon size={28} color="skyblue" name="reply" onPress={(index) => alert("Thought sent to " + element.name + "!")}/></TouchableHighlight>,
+        <TouchableHighlight style={homeStyles.swipeRight}>
+          <Icon 
+            size={28} 
+            color="skyblue" 
+            name="reply" 
+            onPress={(index) => alert("Thought sent to " + element.name + "!")}
+          />
+        </TouchableHighlight>,
       ];
       let subtitle;
       return (
-        <Swipeable key={index} style={homeStyles.rowSpacer} leftButtons = {leftButtons} rightButtons={rightButtons}>
+        <Swipeable
+          key={index} 
+          style={homeStyles.rowSpacer} 
+          leftButtons = {leftButtons} 
+          rightButtons={rightButtons}
+        >
           <View style={homeStyles.row}>
             <Text style={homeStyles.rowName}>{element.name}</Text>
-            <Text style={homeStyles.rowThoughts}>{element.sentToYou} thoughts sent to you!</Text>
+            <Text style={homeStyles.rowThoughts}>
+              {element.sentToYou} thoughts sent to you!
+            </Text>
           </View>
         </Swipeable>
       );
