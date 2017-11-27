@@ -44,7 +44,6 @@ export default class Header extends React.Component {
   }
   render(){
     let data = this.renderData();
-
     return (
       <View>
         <View style={{top: 100}}>
@@ -64,13 +63,7 @@ export default class Header extends React.Component {
 function compare(obj1, obj2){
   let a = parseInt(obj1.thoughts);
   let b = parseInt(obj2.thoughts);
-  if(a < b){
-    return -1;
-  }
-  if(a > b){
-    return -1;
-  }
-  return 0;
+  return a - b;
 }
 
 const friendStyles = StyleSheet.create({

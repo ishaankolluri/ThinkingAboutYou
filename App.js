@@ -83,7 +83,7 @@ export default class App extends React.Component {
         <BottomNavigation 
           labelColor="skyblue" 
           rippleColor="black" 
-          style={{ height:90, elevation: 8, position: 'absolute', top: 720, left: 0, bottom: 0, right: 0}}
+          style={{ height:90, elevation: 8, position: 'absolute', zIndex: 1, top: 720, left: 0, bottom: 0, right: 0}}
           onTabChange={(newTabIndex) => this.handleTabChange(newTabIndex)}
           shifting="true"
         >

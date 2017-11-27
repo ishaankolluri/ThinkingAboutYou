@@ -3,23 +3,33 @@
   [
     {
       "name": "Jonathan Stewart",
-      "thoughts": "19"
+      "thoughts": "19",
+      "sentToYou": "4",
+      "received": "37"
     },
     {
       "name": "Evelyn Mason",
-      "thoughts": "7"
+      "thoughts": "47",
+      "sentToYou": "12",
+      "received": "17"
     },
     {
       "name": "Emily Fischer",
-      "thoughts": "9"
+      "thoughts": "97",
+      "sentToYou": "40",
+      "received": "3"
     },
     {
       "name": "Rahul Patel",
-      "thoughts": "22"
+      "thoughts": "22",
+      "sentToYou": "17",
+      "received": "17"
     },
     {
       "name": "Maria Smith",
-      "thoughts": "1"
+      "thoughts": "2",
+      "sentToYou": "3",
+      "received": "2"
     }
   ]
 }
