@@ -18,10 +18,13 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     let json = require('./data/data.json');
+    let contacts = require('./data/contacts.json');
+    contacts = contacts.list;
     this.state = {
       activeTab: 0,
       fontLoaded: false,
-      data: json.friends
+      data: json.friends,
+      contactList: contacts,
     }
    
   }
@@ -55,6 +58,29 @@ export default class App extends React.Component {
     }
   }
 
+  handleFriendAdd(name){
+    let entry = {
+      "name": name,
+      "thoughts": "0",
+      "sentToYou": "0",
+      "received": "0"
+    };
+    let list = this.state.data.slice();
+    let newName = true;
+    for(let i = 0; i < list.length; i++){
+      if(list[i].name === name){
+        newName = false;
+        break;
+      }
+    }
+    if(newName){
+      list.push(entry);
+    }
+    this.setState({
+      "data": list
+    });
+  }
+
   handleDelete(name){
     let updated = this.state.data.slice();
     for(let i = 0; i < updated.length; i++){
@@ -63,6 +89,7 @@ export default class App extends React.Component {
         break;
       }
     }
+
     this.setState({
       data: updated,
       activeTab: 1
@@ -82,7 +109,9 @@ export default class App extends React.Component {
       body = (
         <Friends
           data={this.state.data}
+          contactList={this.state.contactList}
           handleFriendDelete={(index) => this.handleDelete(index)}
+          onAdd={(name) => this.handleFriendAdd(name)}
         />
       );
     }
